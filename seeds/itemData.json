@@ -1,0 +1,24 @@
+[
+    {
+      "name": "Purple Purse",
+      "date_added": "2021-06-17T08:00:00.000Z",
+      "description": "A purple purse with a knick on the handle",
+      "reward": 5,
+      "user_id": 2
+    },
+    {
+        "name": "Silver Watch",
+        "date_added": "2020-04-03T12:00:00.000Z",
+        "description": "A silver watch in good cosmetic condition",
+        "reward": 50,
+        "user_id": 1
+    },
+    {
+        "name": "Golden Bird Cage",
+        "date_added": "2019-09-22T17:00:00.000Z",
+        "description": "A gold bird cage",
+        "reward": 5000,
+        "user_id": 3
+    }
+  ]
+  
