@@ -12,7 +12,7 @@ const loginFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
     response.ok
-      ? document.location.replace('/')
+      ? document.location.replace('/profile')
       : alert('Login attempt failed');
   }
 };
