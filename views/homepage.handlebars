@@ -1,1 +1,14 @@
-<h1 class="display-1">Hello World!</h1>
+<div class="container">
+  {{#each items as |item|}}
+    <div class="card m-3 text-center">
+      <div class="card-body">
+        <h5 class="card-title border-bottom">{{item.name}}</h5>
+        <p class="card-text">{{item.description}}</p>
+      </div>
+      <div class="card-footer text-muted d-flex justify-content-around">
+        <p>Created By: {{item.user_id}}</p>
+        <p>Created: {{format_date item.date_added}}</p>
+      </div>
+    </div>
+  {{/each}}
+</div>
