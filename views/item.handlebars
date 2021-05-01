@@ -1,29 +1,32 @@
-{{#if items.length}}
-<div class="container">
-  {{#each items as |item|}}
-    <div class="card m-3 text-center">
-      <div class="card-body">
-        <h5 class="card-title border-bottom">{{item.name}}</h5>
-        <p class="card-text">{{item.description}}</p>
-      </div>
-      <div class="card-footer text-muted d-flex justify-content-around">
-        <p>Created By: {{item.user_id}}</p>
-        <p>Created: {{format_date item.date_added}}</p>
-      </div>
-    </div>
-  {{/each}}
+<div class="item-card">
+  <div class="item-card-header">
+    {{name}}
+  </div>
+  <div class="card-body">
+    <p>
+        Date Added:
+        {{date_added}}
+    </p>
+    {{#if description}}
+        <p>
+        Description:
+        {{description}}
+        </p>
+    {{/if}}
+    <p>
+      Reward:
+      {{reward}}
+    </p>
+  </div>
 </div>
 
-{{else}}
-<h1>Nope</h1>
-{{/if}}
+{{!-- update item form --}}
 
-
-<div class="add-item-container">
+<div class="edit-item-container">
   <h2>
-    Report an item as lost
+    Update item
   </h2>
-  <form class="new-item-form">
+  <form class="edit-item-form">
     <label for="name">
       Item Name:
     </label>
@@ -62,4 +65,3 @@
   </form>
 </div>
 <script src="/js/edit-item.js"></script>
-
