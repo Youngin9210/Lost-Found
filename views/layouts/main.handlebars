@@ -19,18 +19,18 @@
 				<li class="nav-item active">
 					<a href="/dashboard" class="nav-link">Dashboard</a>
 				</li>
-				{{!-- {{#if logged_in}} --}}
+				{{#if logged_in}}
 				<li class="nav-item active">
 					<a href="/profile" class="nav-link" id="profile">Profile</a>
 				</li>
 				<li class="nav-item active">
 					<a href="/logout" class="nav-link" id="logout">Logout</a>
 				</li>
-				{{!-- {{else}} --}}
+				{{else}}
 				<li class="nav-item active">
 					<a href="/login" class="nav-link">Login</a>
 				</li>
-				{{!-- {{/if}} --}}
+				{{/if}}
 			</ul>
 		</div>
 	</nav>
@@ -38,6 +38,10 @@
 	{{{ body }}}
 
   </header>
+
+	{{#if logged_in}}
+	<script src="/js/logout.js"></script>
+	{{/if}}
   
 </body>
 </html>
