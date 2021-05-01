@@ -1,3 +1,4 @@
+{{#if items.length}}
 <div class="container">
   {{#each items as |item|}}
     <div class="card m-3 text-center">
@@ -12,6 +13,11 @@
     </div>
   {{/each}}
 </div>
+
+{{else}}
+<h1>Nope</h1>
+{{/if}}
+
 
 <div class="add-item-container">
   <h2>
@@ -56,3 +62,4 @@
   </form>
 </div>
 <script src="/js/edit-item.js"></script>
+
