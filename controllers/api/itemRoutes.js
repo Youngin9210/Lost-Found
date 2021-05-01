@@ -1,6 +1,24 @@
 const router = require('express').Router();
-const { Item } = require('../../models');
+const { Item, User } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+router.get('/:id', withAuth, async (req, res) => {
+  try {
+    const itemData = await Item.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
+    const item = itemData.get({ plain: true });
+
+    res.render('singleItem', { item, logged_in: req.session.logged_in });
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
 
 router.post('/', withAuth, async (req, res) => {
   try {
