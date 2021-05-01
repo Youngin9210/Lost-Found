@@ -1,0 +1,12 @@
+<div class="container my-3">
+  <div class="card m-3">
+    <div class="card-body border-bottom">
+      <div class="card-title border-bottom d-flex justify-content-between">
+        <h2>{{item.name}}</h2>
+        <small class="text-muted">Posted By {{item.user.username}} on {{format_date item.date_added}}</small>
+      </div>
+      <p class="card-text lead">{{item.description}}</p>
+    </div>
+  </div>
+</div>
+    
