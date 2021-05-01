@@ -28,20 +28,23 @@
   </div>
 
   {{#if items.length}}
-  <div class="col-md-6 item-list">
-    <h3>Current Items:</h3>
+    <div class="col-md-6 item-list">
+      <h3>Current Items:</h3>
 
-    {{#each items as |item|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/item/{{item.id}}">{{item.name}}</a></h4>
+      {{#each items as |item|}}
+      <div class="row mb-2">
+        <div class="col-md-8">
+          <h4><a href="/item/{{item.id}}">{{item.name}}</a></h4>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-sm btn-danger" data-id="{{item.id}}">DELETE</button>
+        </div>
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{item.id}}">DELETE</button>
-      </div>
+      {{/each}}
     </div>
-    {{/each}}
-  </div>
+    {{else}}
+    <h1>Nope</h1>
+    {{!-- <h1>{{items}}</h1> --}}
   {{/if}}
 </div>
 
