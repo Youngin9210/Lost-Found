@@ -27,8 +27,8 @@
     </form>
   </div>
 
+  <div class="col-md-6 item-list">
   {{#if items.length}}
-    <div class="col-md-6 item-list">
       <h3>Current Items:</h3>
 
       {{#each items as |item|}}
@@ -41,8 +41,11 @@
         </div>
       </div>
       {{/each}}
-    </div>
+    {{else}}
+    <h1>No reported items</h1>
   {{/if}}
+  </div>
+
 </div>
 
 <script src="./js/profile.js"></script>
