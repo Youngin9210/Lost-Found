@@ -1,0 +1,14 @@
+.btn-lg{
+    width: 10em;
+    margin: .5em;
+    background-color: gray;
+}
+
+#submitItemBtn{
+    margin-top: 10vh;
+}
+
+#actionContainer{
+    height: 35vh;
+   
+}
