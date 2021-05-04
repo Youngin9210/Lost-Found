@@ -1,0 +1,19 @@
+.signup-form {
+    width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.text-info text-center{
+
+}
+
+body {
+    background: #5e8a46; 
+    background: -webkit-linear-gradient(right, #40adc0, #119292);
+    background: -moz-linear-gradient(right, #40adc0, #119292);
+    background: -o-linear-gradient(right, #40adc0, #119292);
+    background: linear-gradient(to left, #40adc0, #119292);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;      
+  }
