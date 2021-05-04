@@ -13,7 +13,9 @@ const signupFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    response.ok ? document.location.replace('/profile') : alert(res.statusText);
+    response.ok
+      ? document.location.replace('/profile')
+      : alert(response.statusText);
   }
 };
 
