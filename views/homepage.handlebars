@@ -12,9 +12,33 @@
   </div>
 </div>
 
+<div id="input" class='d-flex justify-content-center'>
+  <input type="text" class="input" placeholder="Search an item">
+  <button id="searchitem">Search</button>
+</div>
+
+{{!-- {{#each items as |item|}}
+  {{#if item.name.contains("hello")}}
+    <a href="api/items/{{item.id}}" class="text-reset text-decoration-none">
+        <div class="card m-3 text-center col-11" id="spawnedCards">
+          <div class="card-body">
+            <h5 class="card-title border-bottom">{{item.name}}</h5>
+            <p class="card-text">{{item.description}}</p>
+            <p>Reward: ${{item.reward}}</p>
+          </div>
+          <div class="card-footer text-muted d-flex justify-content-around">
+            <p>Created By: {{item.user.username}}</p>
+            <p>Created: {{format_date item.date_added}}</p>
+          </div>
+        </div>
+      </a>
+  {{/if}}
+{{/each}} --}}
+
 {{#if items.length}}
 <div class="container">
   <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+    
   {{#each items as |item|}}
     <a href="api/items/{{item.id}}" class="text-reset text-decoration-none">
       <div class="card m-3 text-center col-11" id="spawnedCards">
@@ -23,8 +47,9 @@
           <p class="card-text">{{item.description}}</p>
           <p>Reward: ${{item.reward}}</p>
         </div>
-        <div class="card-footer text-muted d-flex justify-content-around">
+        <div class="card-footer text-muted">
           <p>Created By: {{item.user.username}}</p>
+          <p>Email: {{item.user.email}}</p>
           <p>Created: {{format_date item.date_added}}</p>
         </div>
       </div>
@@ -34,7 +59,7 @@
 </div>
 
 {{else}}
-<h1>Nope</h1>
+<h1>No items reported</h1>
 {{/if}}
 
 <script src="/js/edit-item.js"></script>
