@@ -13,7 +13,7 @@
 </div>
 
 <div id="input" class='d-flex justify-content-center'>
-  <input type="text" class="input" placeholder="Search an item">
+  <input type="text" class="input" placeholder="Search for an item">
   <button id="searchitem">Search</button>
 </div>
 
@@ -37,7 +37,7 @@
 
 {{#if items.length}}
 <div class="container">
-  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 d-flex justify-content-center">
     
   {{#each items as |item|}}
     <a href="api/items/{{item.id}}" class="text-reset text-decoration-none">
@@ -59,7 +59,7 @@
 </div>
 
 {{else}}
-<h1>No items reported</h1>
+<h1>No reported items</h1>
 {{/if}}
 
 <script src="/js/edit-item.js"></script>
