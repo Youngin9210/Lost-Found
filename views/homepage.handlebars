@@ -14,9 +14,10 @@
 
 {{#if items.length}}
 <div class="container">
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
   {{#each items as |item|}}
     <a href="api/items/{{item.id}}" class="text-reset text-decoration-none">
-      <div class="card m-3 text-center">
+      <div class="card m-3 text-center col-11" id="spawnedCards">
         <div class="card-body">
           <h5 class="card-title border-bottom">{{item.name}}</h5>
           <p class="card-text">{{item.description}}</p>
@@ -28,6 +29,7 @@
       </div>
     </a>
   {{/each}}
+  </div>
 </div>
 
 {{else}}

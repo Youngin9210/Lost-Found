@@ -9,6 +9,10 @@
 }
 
 #actionContainer{
-    height: 35vh;
+    height: 30vh;
    
+}
+
+.card-text{
+    height: 10vw;
 }
