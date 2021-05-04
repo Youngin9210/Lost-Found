@@ -1,51 +1,57 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{username}}!</h2>
-  </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Post a New Item:</h3>
-
-    <form class="form new-item-form">
-      <div class="form-group">
-        <label for="item-name">Item name:</label>
-        <input class="form-input" type="text" id="item-name" name="item-name" />
-      </div>
-      <div class="form-group">
-        <label for="item-desc">Description:</label>
-        <textarea class="form-input" id="item-desc" name="item-desc"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="item-reward">Reward ($):</label>
-        <input class="form-input" type="number" id="item-reward" name="item-reward" />
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
+<div class="container">
+  <div class="row">
+    <div class="col-auto">
+     <h2>Welcome, {{username}}!</h2>
+    </div>
   </div>
 
-  <div class="col-md-6 item-list">
-  {{#if items.length}}
-      <h3>Current Items:</h3>
-
-      {{#each items as |item|}}
-      <div class="row mb-2">
-        <div class="col-md-8">
-          <h4><a href="/item/{{item.id}}">{{item.name}}</a></h4>
+  <div class="row mt-4">
+    <div class="col-md-6">
+     <h4>Post a New Item:</h4>
+      <form class="form new-item-form">
+        <div class="form-group">
+          <label for="item-name">Item Name</label>
+          <input type="text" class="form-control" id="item-name" name="item-name" aria-describedby="emailHelp">
         </div>
-        <div class="col-md-4">
-          <button class="btn btn-sm btn-danger" data-id="{{item.id}}">DELETE</button>
-        </div>
-      </div>
-      {{/each}}
-    {{else}}
-    <h1>No reported items</h1>
-  {{/if}}
-  </div>
 
+        <div class="form-group">
+          <label for="item-desc">Item Description</label>
+          <textarea class="form-control" id="item-desc" name="item-desc" rows="3"></textarea>
+          <small id="descHelp" class="form-text text-muted">Please be as descriptive as possible with specific detail.</small>
+
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="item-reward">Reward($)</label>
+            <input type="number" class="form-control" id="item-reward" name="item-reward" aria-describedby="emailHelp">
+          </div>
+        </div>
+        <div class="form-row">
+          <button type="submit" class="btn btn-primary mb-2" id="profileItemSubmit">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-6 item-list">
+    {{#if items.length}}
+       <h3>Current Items:</h3>
+
+        {{#each items as |item|}}
+        <div class="row mb-2">
+          <div class="col-md-8">
+            <h4><a href="/item/{{item.id}}">{{item.name}}</a></h4>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-sm btn-danger" data-id="{{item.id}}">DELETE</button>
+          </div>
+        </div>
+        {{/each}}
+      {{else}}
+      <h1>No reported items</h1>
+    {{/if}}
+    </div>
+  </div>
 </div>
 
 <script src="./js/profile.js"></script>
