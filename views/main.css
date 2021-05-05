@@ -17,7 +17,7 @@
   
   
  
-  
+  /* for website to be resposive when using on phone or tablet */
   @media (max-width:600px) {
     .nav-link navbar-brand {
       display: inline-block;
