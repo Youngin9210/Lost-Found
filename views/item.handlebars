@@ -6,7 +6,7 @@
     <div class="card-body">
       <p>
           Date Added:
-          {{date_added}}
+          {{format_date date_added}}
       </p>
       {{#if description}}
           <p>
@@ -41,7 +41,7 @@
       </label>
       <br />
       <textarea id="date_added" name="date_added" rows="2" cols="30">
-        {{date_added}}
+        {{format_date date_added}}
       </textarea>
       <br />
       <label for="description">
