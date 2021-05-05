@@ -18,10 +18,12 @@
 </div>
 
 {{#if items.length}}
-<div class="container d-flex justify-content-around">
+
+<div class="container "> 
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 d-flex">
   {{#each items as |item|}}
     {{#unless item.isFound}}
-      <div class="card col-md-3 border-0">
+      <div class="card border-0">
           <div class="card m-3 text-center col-11" id="spawnedCards">
             <div class="card-body">
               <div class="card-title border-bottom">
@@ -39,6 +41,7 @@
       </div>
     {{/unless}}
   {{/each}}
+  </div>
 </div>
 
 {{else}}
