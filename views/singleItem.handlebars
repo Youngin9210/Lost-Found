@@ -6,7 +6,12 @@
         <small class="text-muted">Posted By {{item.user.username}} on {{format_date item.date_added}}</small>
       </div>
       <p class="card-text lead">{{item.description}}</p>
+      <div class="text-right">
+        <h4>Reward: ${{item.reward}}</h4>
+        <a id="foundBtn" href="" class="btn btn-success" data-user="{{item.user_id}}" data-item="{{item.id}}" data-isLoggedIn="{{logged_in}}" data-isFound="true">Mark as Found</a>
+      </div>
     </div>
   </div>
 </div>
-    
+
+<script src="/js/found.js"></script>
