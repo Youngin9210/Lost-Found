@@ -1,67 +1,69 @@
-<div class="item-card">
-  <div class="item-card-header">
-    {{name}}
-  </div>
-  <div class="card-body">
-    <p>
-        Date Added:
-        {{date_added}}
-    </p>
-    {{#if description}}
-        <p>
-        Description:
-        {{description}}
-        </p>
-    {{/if}}
-    <p>
-      Reward:
-      ${{reward}}
-    </p>
-  </div>
-</div>
-
-{{!-- update item form --}}
-
-<div class="edit-item-container">
-  <h2>
-    Update item
-  </h2>
-  <form class="edit-item-form">
-    <label for="name">
-      Item Name:
-    </label>
-    <br />
-    <textarea id="name" name="name" rows="2" cols="30">
+<div class="d-flex justify-content-center">
+  <div class="item-card">
+    <h2 class="item-card-header card-body">
       {{name}}
-    </textarea>
-    <br />
-    <label for="date_added">
-      Date Added:
-    </label>
-    <br />
-    <textarea id="date_added" name="date_added" rows="2" cols="30">
-      {{date_added}}
-    </textarea>
-    <br />
-    <label for="description">
-      Description:
-    </label>
-    <br />
-    <textarea id="description" name="description" rows="5" cols="30">
-      {{description}}
-    </textarea>
-    <br />
-    <label for="reward">
-      Reward: $
-    </label>
-    <br />
-    <textarea id="reward" name="reward" rows="2" cols="30">
-      {{reward}}
-    </textarea>
-    <br />
-    <button type="submit" value="Submit">
-      Submit
-    </button>
-  </form>
+    </h2>
+    <div class="card-body">
+      <p>
+          Date Added:
+          {{date_added}}
+      </p>
+      {{#if description}}
+          <p>
+          Description:
+          {{description}}
+          </p>
+      {{/if}}
+      <p>
+        Reward:
+        ${{reward}}
+      </p>
+    </div>
+  </div>
+
+  {{!-- update item form --}}
+
+  <div class="edit-item-container">
+    <h2>
+      Update item
+    </h2>
+    <form class="edit-item-form">
+      <label for="name">
+        Item Name:
+      </label>
+      <br />
+      <textarea id="name" name="name" rows="2" cols="30">
+        {{name}}
+      </textarea>
+      <br />
+      <label for="date_added">
+        Date Added:
+      </label>
+      <br />
+      <textarea id="date_added" name="date_added" rows="2" cols="30">
+        {{date_added}}
+      </textarea>
+      <br />
+      <label for="description">
+        Description:
+      </label>
+      <br />
+      <textarea id="description" name="description" rows="5" cols="30">
+        {{description}}
+      </textarea>
+      <br />
+      <label for="reward">
+        Reward: $
+      </label>
+      <br />
+      <textarea id="reward" name="reward" rows="2" cols="30">
+        {{reward}}
+      </textarea>
+      <br />
+      <button type="submit" value="Submit">
+        Submit
+      </button>
+    </form>
+  </div>
 </div>
 <script src="/js/edit-item.js"></script>
