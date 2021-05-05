@@ -25,8 +25,13 @@ Item.init(
       allowNull: true,
     },
     reward: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    isFound: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
