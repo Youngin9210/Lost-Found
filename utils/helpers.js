@@ -4,7 +4,7 @@ module.exports = {
     return date.toLocaleDateString();
   },
 
-  capitalize: (username) => {
-    return username[0].toUpperCase() + username.slice(1);
+  capitalize: (string) => {
+    return string[0].toUpperCase() + string.slice(1);
   },
 };

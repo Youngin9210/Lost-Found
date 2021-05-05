@@ -1,69 +1,52 @@
-<div class="d-flex justify-content-center">
-  <div class="item-card">
-    <h2 class="item-card-header card-body">
-      {{name}}
-    </h2>
-    <div class="card-body">
-      <p>
-          Date Added:
-          {{format_date date_added}}
-      </p>
-      {{#if description}}
-          <p>
-          Description:
-          {{description}}
-          </p>
-      {{/if}}
-      <p>
-        Reward:
-        ${{reward}}
-      </p>
+
+<div class="container">
+  <div class="container my-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center-border-bottom">
+          <h3 class="card-title">{{capitalize name}}</h3>
+          <small>Created on: {{format_date date_added}}</small>
+        </div>
+        <p class="lead">{{description}}</p>
+        <p>Reward: ${{reward}}</p>
+          <div class="text-right">
+            <button class="btn btn-info m-3" data-toggle="modal" data-target="#edit-item-modal">Edit Item</button>
+          </div>
+      </div>
     </div>
   </div>
 
-  {{!-- update item form --}}
-
-  <div class="edit-item-container">
-    <h2>
-      Update item
-    </h2>
-    <form class="edit-item-form">
-      <label for="name">
-        Item Name:
-      </label>
-      <br />
-      <textarea id="name" name="name" rows="2" cols="30">
-        {{name}}
-      </textarea>
-      <br />
-      <label for="date_added">
-        Date Added:
-      </label>
-      <br />
-      <textarea id="date_added" name="date_added" rows="2" cols="30">
-        {{format_date date_added}}
-      </textarea>
-      <br />
-      <label for="description">
-        Description:
-      </label>
-      <br />
-      <textarea id="description" name="description" rows="5" cols="30">
-        {{description}}
-      </textarea>
-      <br />
-      <label for="reward">
-        Reward: $
-      </label>
-      <br />
-      <textarea id="reward" name="reward" rows="2" cols="30">
-        {{reward}}
-      </textarea>
-      <br />
-      <button type="submit" value="Submit">
-        Submit
-      </button>
-    </form>
+  <div class="modal fade" tabindex="-1" role="dialog" id="edit-item-modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Item Details</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="edit-item-form">
+            <div class="form-group">
+              <label for="item-name">Item Name:</label>
+              <input id="item-name" type="text" class="form-control" value="{{name}}">
+            </div>
+            <div class="form-group">
+              <label for="item-desc">Item Description:</label>
+              <textarea name="item-desc" id="item-desc" class="form-control" rows="3">{{description}}</textarea>
+            </div>
+            <div class="form-group">
+              <label for="item-reward">Reward($):</label>
+              <input id="item-reward" type="text" class="form-control" value="{{reward}}">
+            </div>
+            <div class="modal-footer">
+              <button id="update-item" type="submit" class="btn btn-info">Update</button>
+            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <script src="/js/edit-item.js"></script>
