@@ -4,9 +4,10 @@ const newSearchHandler = async (event) => {
     const search = document.querySelector('.searchfield');
 
 
-    if (search) {
-        const response = await fetch(`/`, {
-        method: 'POST',
+    if (event.target.hasAttribute('data-id')) {
+        const id = event.target.getAttribute('data-id');
+        const response = await fetch(`/api/items/${id}`, {
+        method: 'GET',
         body: JSON.stringify({ search }),
         headers: {
             'Content-Type': 'application/json',
@@ -14,9 +15,9 @@ const newSearchHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/search');
         } else {
-            alert('Failed to create item');
+            alert('Failed to search');
         }
     }
 }
