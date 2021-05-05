@@ -20,6 +20,24 @@ router.get('/:id', withAuth, async (req, res) => {
   }
 });
 
+router.put('/isFound/:id', async (req, res) => {
+  try {
+    const itemData = await Item.update(
+      {
+        isFound: req.body.isFound,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.status(200).json(itemData);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
+
 router.post('/', withAuth, async (req, res) => {
   try {
     const newItem = await Item.create({
