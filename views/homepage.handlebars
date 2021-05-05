@@ -18,26 +18,27 @@
 </div>
 
 {{#if items.length}}
-<div class="container">
-  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 d-flex justify-content-center">
-    
+<div class="container d-flex justify-content-around">
   {{#each items as |item|}}
-    <a href="api/items/{{item.id}}" class="text-reset text-decoration-none">
-      <div class="card m-3 text-center col-11" id="spawnedCards">
-        <div class="card-body">
-          <h5 class="card-title border-bottom">{{item.name}}</h5>
-          <p class="card-text">{{item.description}}</p>
-          <p>Reward: ${{item.reward}}</p>
-        </div>
-        <div class="card-footer text-muted">
-          <p>Created By: {{item.user.username}}</p>
-          <p>Email: {{item.user.email}}</p>
-          <p>Created: {{format_date item.date_added}}</p>
-        </div>
+    {{#unless item.isFound}}
+      <div class="card col-md-3 border-0">
+          <div class="card m-3 text-center col-11" id="spawnedCards">
+            <div class="card-body">
+              <div class="card-title border-bottom">
+              <h5>{{item.name}}</h5>
+              <small class="text-muted">Reported By: {{item.user.username}}</small>
+              <br>
+              <small class="text-muted"> on {{format_date item.date_added}}</small>
+              </div>
+              <p class="card-text">{{item.description}}</p>
+            </div>
+            <div class="card-footer">
+              <a id="viewItem" href="api/items/{{item.id}}" class="btn btn-primary">View Item</a>
+            </div>
+          </div>
       </div>
-    </a>
+    {{/unless}}
   {{/each}}
-  </div>
 </div>
 
 {{else}}
