@@ -1,0 +1,67 @@
+<div class = "container" id="actionContainer">
+  <div class = "d-flex justify-content-center ">
+    <div class="">
+		  <a href="/profile" class="btn btn-primary btn-lg " role="button" aria-pressed="true" id="submitItemBtn">Submit Lost Item</a>
+    </div>
+  </div>
+</div>
+
+<div id="input" class='d-flex justify-content-center'>
+  <input type="text" class="searchfield" placeholder="Search for an item">
+  <a href='/search' class="btn btn-primary btn-lg" role='botton' id="searchbutton">Search</a>
+</div>
+
+{{#if items.length}}
+    <div class="container">
+        <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 d-flex justify-content-center">
+        {{#each items as |item|}}
+            {{#if item.name}}
+            {{!-- item.name.includes('searchfield.innerHTML') --}}
+            <a href="api/items/{{item.id}}" class="text-reset text-decoration-none">
+      <div class="card m-3 text-center col-11" id="spawnedCards">
+        <div class="card-body">
+          <h5 class="card-title border-bottom" data-id="{{item.id}}">{{item.name}}</h5>
+          <p class="card-text">{{item.description}}</p>
+          <p>Reward: ${{item.reward}}</p>
+        </div>
+        <div class="card-footer text-muted">
+          <p>Created By: {{item.user.username}}</p>
+          <p>Email: {{item.user.email}}</p>
+          <p>Created: {{format_date item.date_added}}</p>
+        </div>
+      </div>
+    </a>
+    {{else}}
+    <h1>No items match your search</h1>
+    {{/if}}
+  {{/each}}
+  </div>
+</div>
+{{/if}}
+
+{{!-- {{#if items.length}}
+<div class="container">
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 d-flex justify-content-center">
+    
+  {{#each items as |item|}}
+    <a href="api/items/{{item.id}}" class="text-reset text-decoration-none">
+      <div class="card m-3 text-center col-11" id="spawnedCards">
+        <div class="card-body">
+          <h5 class="card-title border-bottom">{{item.name}}</h5>
+          <p class="card-text">{{item.description}}</p>
+          <p>Reward: ${{item.reward}}</p>
+        </div>
+        <div class="card-footer text-muted">
+          <p>Created By: {{item.user.username}}</p>
+          <p>Email: {{item.user.email}}</p>
+          <p>Created: {{format_date item.date_added}}</p>
+        </div>
+      </div>
+    </a>
+  {{/each}}
+  </div>
+</div>
+
+{{else}}
+<h1>No reported items</h1>
+{{/if}} --}}
