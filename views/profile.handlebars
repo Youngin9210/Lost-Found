@@ -35,20 +35,35 @@
 
     <div class="col-md-6 item-list">
     {{#if items.length}}
-       <h3>Current Items:</h3>
+      <h3>Current Lost Items:</h3>
 
-        {{#each items as |item|}}
-        <div class="row mb-2">
-          <div class="col-md-8">
-            <h4><a href="/item/{{item.id}}">{{item.name}}</a></h4>
+      {{#each items as |item|}}
+        {{#unless item.isFound}}
+          <div class="row mb-2">
+            <div class="col-md-8">
+              <h4><a href="/item/{{item.id}}">{{item.name}}</a></h4>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-sm btn-danger" data-id="{{item.id}}">DELETE</button>
+            </div>
           </div>
-          <div class="col-md-4">
-            <button class="btn btn-sm btn-danger" data-id="{{item.id}}">DELETE</button>
+        {{/unless}}
+      {{/each}}
+      <h3>Items that have been found:</h3>
+      {{#each items as |item|}}
+        {{#if item.isFound}}
+          <div class="row mb-2">
+            <div class="col-md-8">
+              <h4><a href="/item/{{item.id}}">{{item.name}}</a></h4>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-sm btn-danger" data-id="{{item.id}}">DELETE</button>
+            </div>
           </div>
-        </div>
-        {{/each}}
-      {{else}}
-      <h1>No reported items</h1>
+        {{/if}}
+      {{/each}}
+    {{else}}
+      <h1>No reported lost items</h1>
     {{/if}}
     </div>
   </div>
