@@ -1,12 +1,11 @@
 const newSearchHandler = async (event) => {
     event.preventDefault();
 
-    const search = document.querySelector('.searchfield');
+    const search = document.querySelector('#searchfield').value.trim();
 
-
-    if (event.target.hasAttribute('data-id')) {
-        const id = event.target.getAttribute('data-id');
-        const response = await fetch(`/api/items/${id}`, {
+    if (search) {
+        console.log('search');
+        const response = await fetch(`/search`, {
         method: 'GET',
         body: JSON.stringify({ search }),
         headers: {
@@ -23,5 +22,5 @@ const newSearchHandler = async (event) => {
 }
 
 document
-  .querySelector('.searchbutton')
+  .querySelector('#searchbutton')
   .addEventListener('click', newSearchHandler);

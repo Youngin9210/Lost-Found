@@ -8,6 +8,7 @@ router.get('/', async (req, res) => {
     try {
       // Get all items and JOIN with user data
       const itemData = await Item.findAll({
+        // where: { name: "Silver Watch" },
         include: [
           {
             model: User,
