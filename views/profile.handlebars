@@ -1,55 +1,74 @@
-<div class="container">
-  <div class="row">
-    <div class="col-auto">
-     <h2>Welcome, {{username}}!</h2>
-    </div>
-  </div>
 
-  <div class="row mt-4">
-    <div class="col-md-6">
-     <h4>Post a New Item:</h4>
-      <form class="form new-item-form">
-        <div class="form-group">
-          <label for="item-name">Item Name</label>
-          <input type="text" class="form-control" id="item-name" name="item-name" aria-describedby="emailHelp">
-        </div>
 
-        <div class="form-group">
-          <label for="item-desc">Item Description</label>
-          <textarea class="form-control" id="item-desc" name="item-desc" rows="3"></textarea>
-          <small id="descHelp" class="form-text text-muted">Please be as descriptive as possible with specific detail.</small>
+    
 
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="item-reward">Reward($)</label>
-            <input type="number" class="form-control" id="item-reward" name="item-reward" aria-describedby="emailHelp">
-          </div>
-        </div>
-        <div class="form-row">
-          <button type="submit" class="btn btn-primary mb-2" id="profileItemSubmit">Submit</button>
-        </div>
-      </form>
-    </div>
-
-    <div class="col-md-6 item-list">
+<div class="container text-center">
+  <h2>Welcome, {{capitalize username}}!</h2>
+  <button class="btn btn-info m-3" data-toggle="modal" data-target="#newItemModal">Report Lost Item</button>
+  <div class="item-list">
     {{#if items.length}}
-       <h3>Current Items:</h3>
+      <h3>Current Lost Items:</h3>
 
-        {{#each items as |item|}}
-        <div class="row mb-2">
-          <div class="col-md-8">
-            <h4><a href="/item/{{item.id}}">{{item.name}}</a></h4>
+      {{#each items as |item|}}
+        {{#unless item.isFound}}
+          <div class="row mb-2">
+            <div class="col-md-8">
+              <h4><a href="/item/{{item.id}}">{{item.name}}</a></h4>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-sm btn-danger" data-id="{{item.id}}"><i class="far fa-trash-alt"></i></button>
+            </div>
           </div>
-          <div class="col-md-4">
-            <button class="btn btn-sm btn-danger" data-id="{{item.id}}">DELETE</button>
+        {{/unless}}
+      {{/each}}
+      <h3>Items that have been found:</h3>
+      {{#each items as |item|}}
+        {{#if item.isFound}}
+          <div class="row mb-2">
+            <div class="col-md-8">
+              <h4><a href="/item/{{item.id}}">{{item.name}}</a></h4>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-sm btn-danger" data-id="{{item.id}}"><i class="far fa-trash-alt"></i></button>
+            </div>
           </div>
-        </div>
-        {{/each}}
-      {{else}}
-      <h1>No reported items</h1>
+        {{/if}}
+      {{/each}}
+    {{else}}
+      <h1>No reported lost items</h1>
     {{/if}}
+    </div>
+  <div class="modal fade" id="newItemModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Report Lost Item</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="new-item-form">
+            <div class="form-group">
+              <label for="item-name">Item Name</label>
+              <input id="item-name" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="item-desc">Item Description</label>
+              <textarea name="item-desc" id="item-desc" class="form-control" rows="3"></textarea>
+              <small class="text-muted">Please be as descriptive as possible with specific details</small>
+            </div>
+            <div class="form-group">
+              <label for="item-reward">Reward($)</label>
+              <input id="item-reward" type="text" class="form-control">
+            </div>
+          <div class="modal-footer">
+            <button id="submit-item" type="submit" class="btn btn-primary">Submit Item</button>
+            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
