@@ -12,9 +12,11 @@ router.get('/:id', withAuth, async (req, res) => {
         },
       ],
     });
-    const item = itemData.get({ plain: true });
 
-    res.render('singleItem', { item, logged_in: req.session.logged_in });
+    const item = itemData.get({ plain: true });
+    const user = req.session.user_id;
+
+    res.render('singleItem', { item, user, logged_in: req.session.logged_in });
   } catch (error) {
     res.status(400).json(error);
   }
