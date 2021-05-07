@@ -37,7 +37,12 @@
             </div>
             <div class="form-group">
               <label for="item-reward">Reward($):</label>
-              <input id="item-reward" type="text" class="form-control" value="{{reward}}">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">$</div>
+                </div>
+                <input id="item-reward" type="text" class="form-control" value="{{reward}}">
+              </div>
             </div>
             <div class="modal-footer">
               <button id="update-item" type="submit" class="btn btn-info" data-item="{{id}}">Update</button>
