@@ -4,9 +4,9 @@ const newSearchHandler = async (event) => {
     const search = document.querySelector('#searchfield').value.trim();
 
     if (search) {
-        console.log('search');
+        console.log(search);
         const response = await fetch(`/search`, {
-        method: 'GET',
+        method: 'POST',
         body: JSON.stringify({ search }),
         headers: {
             'Content-Type': 'application/json',
