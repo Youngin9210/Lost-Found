@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Item } = require('../models');
+const { User, Item, Notification } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -16,18 +16,35 @@ router.get('/', withAuth, async (req, res) => {
       ],
     });
 
-    // // Serialize data so the template can read it
-    const items = itemData.map((item) => item.get({ plain: true }));
-
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Item }],
     });
 
+    const notificationData = await Notification.findAll({
+      where: {
+        item_owner: req.session.user_id,
+      },
+      include: [
+        {
+          model: Item,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    // // Serialize data so the template can read it
+    const items = itemData.map((item) => item.get({ plain: true }));
     const user = userData.get({ plain: true });
+    const notifications = notificationData.map((n) => n.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('profile', { items, ...user, logged_in: req.session.logged_in });
+    res.render('profile', {
+      items,
+      ...user,
+      notifications,
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(500).json(err.message);
   }
