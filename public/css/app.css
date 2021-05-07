@@ -26,3 +26,9 @@
   padding: 1px 4px;
   border-radius: 50%;
 }
+
+
+div#notificationDropdown,
+div#userDropdown {
+  position: absolute;
+}
