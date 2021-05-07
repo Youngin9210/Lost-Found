@@ -15,4 +15,17 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const notification = await Notification.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(notification);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+});
+
 module.exports = router;
