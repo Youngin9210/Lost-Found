@@ -27,19 +27,21 @@
 			<div class="d-flex justify-content-center">
 				<li class="nav-item dropdown">
 					{{#if logged_in}}
-					<a href="#" class="nav-link navbar-brand" id="notificationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-bell fa-lg"></i><span class="badge bg-danger text-light d-flex"><small>{{notifications.length}}</small></span>
-					</a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
-						<ul class="list-group">
-							{{#each notifications as |n|}}
-							<li class="dropdown-item">
-								<p><a href=""><i class="fas fa-times"></i></a> {{capitalize n.Item.name}} has been found!</p>
-							</li>
-							{{/each}}
-							
-						</ul>
-					</div>
+						<a href="#" class="nav-link navbar-brand" id="notificationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{#if notifications.length}}
+							<i class="fas fa-bell fa-lg"></i><span class="badge bg-danger text-light d-flex"><small>{{notifications.length}}</small></span>
+							</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
+							<ul class="list-group">
+								{{#each notifications as |n|}}
+								<li class="dropdown-item">
+									<p><a href=""><i class="fas fa-times"></i></a> {{capitalize n.Item.name}} has been found!</p>
+								</li>
+								{{/each}}
+								
+							</ul>
+						</div>
+						{{/if}}
 					{{/if}}
 				</li>
 				<li class="nav-item dropdown">
