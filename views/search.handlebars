@@ -1,3 +1,4 @@
+<h1 class="d-flex justify-content-center">Global Lost and Found</h1>
 <div class = "container" id="actionContainer">
   <div class = "d-flex justify-content-center ">
     <div class="">
@@ -7,7 +8,7 @@
 </div>
 
 <div id="input" class='d-flex justify-content-center'>
-  <input type="text" class="searchfield" placeholder="Search for an item">
+  <input type="text" id="searchfield" placeholder="Search for an item">
   <a href='/search' class="btn btn-primary btn-lg" role='botton' id="searchbutton">Search</a>
 </div>
 
@@ -65,3 +66,5 @@
 {{else}}
 <h1>No reported items</h1>
 {{/if}} --}}
+
+<script src="/js/search.js"></script>

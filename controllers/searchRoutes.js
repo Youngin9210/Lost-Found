@@ -8,6 +8,7 @@ router.get('/', async (req, res) => {
     try {
       // Get all items and JOIN with user data
       const itemData = await Item.findAll({
+        // where: { name: "Silver Watch" },
         include: [
           {
             model: User,
@@ -22,6 +23,40 @@ router.get('/', async (req, res) => {
       res.render('search', { items, logged_in: req.session.logged_in });
     } catch (err) {
       res.status(500).json(err.message);
+    }
+  });
+
+  // router.post('/', async (req, res))
+
+  router.post('/', async (req, res) => {
+    try {
+      const itemName = await Item.findAll({ where: { name: req.body.search } });
+  
+      if (!itemName) {
+        res
+          .status(400)
+          .json({ message: 'Cannot find item with this name' });
+        return;
+      }
+  
+      // const validPassword = await userData.checkPassword(req.body.password);
+  
+      // if (!validPassword) {
+      //   res
+      //     .status(400)
+      //     .json({ message: 'Incorrect email or password, please try again' });
+      //   return;
+      // }
+  
+      // req.session.save(() => {
+      //   req.session.user_id = userData.id;
+      //   req.session.logged_in = true;
+  
+      //   res.json({ user: userData, message: 'You are now logged in!' });
+      // });
+      
+    } catch (err) {
+      res.status(400).json(err.message);
     }
   });
 
