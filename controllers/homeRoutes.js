@@ -14,28 +14,35 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    const notificationData = await Notification.findAll({
-      where: {
-        item_owner: req.session.user_id,
-      },
-      include: [
-        {
-          model: Item,
-          attributes: ['name'],
-        },
-      ],
-    });
-
     // // Serialize data so the template can read it
     const items = itemData.map((item) => item.get({ plain: true }));
-    const notifications = notificationData.map((n) => n.get({ plain: true }));
 
-    // Pass serialized data and session flag into template
-    res.render('homepage', {
-      items,
-      notifications,
-      logged_in: req.session.logged_in,
-    });
+    if (req.session.logged_in) {
+      const notificationData = await Notification.findAll({
+        where: {
+          item_owner: req.session.user_id,
+        },
+        include: [
+          {
+            model: Item,
+            attributes: ['name'],
+          },
+        ],
+      });
+      const notifications = notificationData.map((n) => n.get({ plain: true }));
+      res.render('homepage', {
+        items,
+        notifications,
+        logged_in: req.session.logged_in,
+      });
+    } else {
+      // Pass serialized data and session flag into template
+      res.render('homepage', {
+        items,
+        // notifications,
+        logged_in: req.session.logged_in,
+      });
+    }
   } catch (err) {
     res.status(500).json(err.message);
   }
@@ -54,10 +61,30 @@ router.get('/item/:id', async (req, res) => {
 
     const item = itemData.get({ plain: true });
 
-    res.render('item', {
-      ...item,
-      logged_in: req.session.logged_in,
-    });
+    if (req.session.logged_in) {
+      const notificationData = await Notification.findAll({
+        where: {
+          item_owner: req.session.user_id,
+        },
+        include: [
+          {
+            model: Item,
+            attributes: ['name'],
+          },
+        ],
+      });
+      const notifications = notificationData.map((n) => n.get({ plain: true }));
+      res.render('item', {
+        ...item,
+        notifications,
+        logged_in: req.session.logged_in,
+      });
+    } else {
+      res.render('item', {
+        ...item,
+        logged_in: req.session.logged_in,
+      });
+    }
   } catch (err) {
     res.status(500).json(err.message);
   }

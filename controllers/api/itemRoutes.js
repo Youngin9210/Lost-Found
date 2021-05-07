@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Item, User } = require('../../models');
+const { Item, User, Notification } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/:id', withAuth, async (req, res) => {
@@ -13,10 +13,28 @@ router.get('/:id', withAuth, async (req, res) => {
       ],
     });
 
+    const notificationData = await Notification.findAll({
+      where: {
+        item_owner: req.session.user_id,
+      },
+      include: [
+        {
+          model: Item,
+          attributes: ['name'],
+        },
+      ],
+    });
+
     const item = itemData.get({ plain: true });
     const user = req.session.user_id;
+    const notifications = notificationData.map((n) => n.get({ plain: true }));
 
-    res.render('singleItem', { item, user, logged_in: req.session.logged_in });
+    res.render('singleItem', {
+      item,
+      user,
+      notifications,
+      logged_in: req.session.logged_in,
+    });
   } catch (error) {
     res.status(400).json(error);
   }
