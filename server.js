@@ -32,9 +32,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-//  ***uncomment this when routes are written***
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
+  app.listen(PORT, () =>
+    console.log(`Now listening at http://localhost:${PORT}`)
+  );
 });

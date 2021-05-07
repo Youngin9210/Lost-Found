@@ -2,13 +2,13 @@
   <div class="card m-3">
     <div class="card-body border-bottom">
       <div class="card-title border-bottom d-flex justify-content-between">
-        <h2>{{item.name}}</h2>
+        <h2 id="item-name">{{item.name}}</h2>
         <small class="text-muted">Posted By {{item.user.username}} on {{format_date item.date_added}}</small>
       </div>
       <p class="card-text lead">{{item.description}}</p>
       <div class="text-right">
         <h4>Reward: ${{item.reward}}</h4>
-        <a id="foundBtn" href="" class="btn btn-success" data-user="{{item.user_id}}" data-item="{{item.id}}" data-isLoggedIn="{{logged_in}}" data-isFound="true">Mark as Found</a>
+        <a id="foundBtn" href="" class="btn btn-success" data-user="{{item.user_id}}" data-item="{{item.id}}" data-current="{{user}}" data-isLoggedIn="{{logged_in}}" data-isFound="true">Mark as Found</a>
       </div>
     </div>
   </div>
