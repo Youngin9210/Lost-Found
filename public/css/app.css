@@ -1,7 +1,6 @@
 .btn-lg {
   width: 10em;
   margin: 0.5em;
-  background-color: gray;
 }
 
 #submitItemBtn {
@@ -26,4 +25,10 @@
   right: 30px;
   padding: 1px 4px;
   border-radius: 50%;
+}
+
+
+div#notificationDropdown,
+div#userDropdown {
+  position: absolute;
 }
