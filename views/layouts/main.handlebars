@@ -32,10 +32,10 @@
 							<i class="fas fa-bell fa-lg"></i><span class="badge bg-danger text-light d-flex"><small>{{notifications.length}}</small></span>
 							</a>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
-							<ul class="list-group">
+							<ul class="list-group" id="notificationList">
 								{{#each notifications as |n|}}
 								<li class="dropdown-item">
-									<p><a href=""><i class="fas fa-times"></i></a> {{capitalize n.Item.name}} has been found!</p>
+									<p><a href=""><i class="fas fa-times" data-id="{{n.id}}"></i></a> {{capitalize n.Item.name}} has been found!</p>
 								</li>
 								{{/each}}
 								
@@ -67,7 +67,10 @@
 	{{{ body }}}
 
 	{{#if logged_in}}
-	<script src="/js/logout.js"></script>
+		<script src="/js/logout.js"></script>
+		{{#if notifications.length}}
+		<script src="/js/delete-notification.js"></script>
+		{{/if}}
 	{{/if}}
   
 </body>
