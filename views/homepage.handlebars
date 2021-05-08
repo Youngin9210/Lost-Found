@@ -1,19 +1,29 @@
+<div class="jumbotron jumbotron-fluid text-center" id="lostJumbo">
+  <h1 class="display-4">Global Lost & Found</h1>
+  <p class="lead">Where all users can come together to help one another with finding lost items throughout the world!</p>
+  <hr class="my-4">
+  <p>Did you recently lose something and need help locating it?!</p>
+  <p>Just click the button below to report a lost item so other users can help you find it!</p>
+  <a href="/profile" class="btn btn btn-lg reportBtn">Report Lost Item</a>
+</div>
+
 <div class="container text-center my-4">
-  <a href="/profile" class="btn btn btn-primary mb-4">Report Lost Item</a>
+  
 
 {{!-- <div id="input" class='d-flex justify-content-center'>
   <input type="text" id="searchfield" placeholder="Search for an item">
   <a href='/search' class="btn btn-primary btn-lg" role='button' id="searchbutton">Search</a>
 </div> --}}
 
-<form id="input" class="form-inline my-2 my-lg-0 d-flex justify-content-center">
+{{!-- <form id="input" class="form-inline my-2 my-lg-0 d-flex justify-content-center">
   <input id="searchfield" class="form-control mr-sm-2" type="search" placeholder="Search for an item" aria-label="Search">
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
+  <button id="searchbutton" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form> --}}
 
 
 {{#if items.length}}
-<div class="container"> 
+<div class="container">
+  <h2 class="border-bottom pb-2">Current List of All Lost Items</h2>
   <div class="row d-flex justify-content-center">
   {{#each items as |item|}}
     {{#unless item.isFound}}
@@ -27,7 +37,7 @@
               </div>
               <p class="card-text">{{item.description}}</p>
             </div>
-            <div class="py-3">
+            <div class="py-3" id="card-footer">
               <a id="viewItem" href="api/items/{{item.id}}" class="btn btn-primary">View Item</a>
             </div>
           </div>
