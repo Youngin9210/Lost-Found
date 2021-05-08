@@ -5,9 +5,10 @@ const updateItem = async (event) => {
   const id = document.querySelector('#update-item').getAttribute('data-item');
 
   if (name && description && reward) {
+    console.log(name, description, reward, id);
     const response = await fetch(`/profile/update/${id}`, {
       method: 'PUT',
-      body: JSON.stringify({ name, description, reward, id, user_id }),
+      body: JSON.stringify({ name, description, reward, id }),
       headers: { 'Content-Type': 'application/json' },
     });
     response.ok ? document.location.reload() : alert('Failed to update item');
