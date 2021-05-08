@@ -1,3 +1,7 @@
+nav {
+  background: #1d1e2c;
+}
+
 .btn-lg {
   width: 10em;
   margin: 0.5em;
@@ -26,7 +30,6 @@
   padding: 1px 4px;
   border-radius: 50%;
 }
-
 
 div#notificationDropdown,
 div#userDropdown {
