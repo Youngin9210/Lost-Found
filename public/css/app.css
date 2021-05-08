@@ -1,15 +1,27 @@
+body {
+  background: #59656f;
+  color: white;
+}
+
 nav {
   background: #1d1e2c;
 }
 
 #lostJumbo {
   background: #7fc29b;
+  color: black;
 }
 
 #brand,
 h1,
-h2 {
+h2,
+h3,
+h5 {
   font-family: 'Itim', cursive;
+}
+
+h5 {
+  color: black;
 }
 
 .reportBtn {
@@ -19,9 +31,14 @@ h2 {
 }
 
 .reportBtn:hover {
-  background: #59656f;
+  background: #7fc29b;
   border: 2px solid #1d1e2c;
-  color: white;
+  color: black;
+}
+
+.card {
+  opacity: 80%;
+  color: black;
 }
 
 #spawnedCards:hover {
