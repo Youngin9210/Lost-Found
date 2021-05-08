@@ -8,9 +8,9 @@
       {{#each items as |item|}}
         {{#unless item.isFound}}
           <div class="row mb-2 row-cols-xs-2 d-flex justify-content-center">
-            <div class="col-md-8 col-xs-10 d-flex justify-content-center">
+            <div class="col-md-8 col-xs-10 d-flex justify-content-center" id="lostItems">
               <h4 class="m-2"><a href="/item/{{item.id}}">{{item.name}}</a></h4>
-              <button class="btn btn-sm btn-danger" data-id="{{item.id}}"><i class="far fa-trash-alt"></i></button>
+              <button class="btn btn-danger" data-id="{{item.id}}"><i class="far fa-trash-alt fa-lg" data-id="{{item.id}}"></i></button>
             </div>
           </div>
         {{/unless}}
@@ -21,7 +21,7 @@
           <div class="row mb-2 d-flex justify-content-center">
             <div class="col-md-8 d-flex justify-content-center">
               <h4 class="m-2"><a href="/item/{{item.id}}">{{item.name}}</a></h4>
-              <button class="btn btn-sm btn-danger" data-id="{{item.id}}"><i class="far fa-trash-alt"></i></button>
+              <button class="btn btn-danger" data-id="{{item.id}}"><i class="far fa-trash-alt fa-lg" data-id="{{item.id}}"></i></button>
             </div>
           </div>
         {{/if}}
@@ -70,4 +70,8 @@
   </div>
 </div>
 
-<script src="./js/profile.js"></script>
+<script src="/js/profile.js"></script>
+
+{{#if items.length}}
+<script src="/js/delete.js"></script>
+{{/if}}
