@@ -2,6 +2,46 @@ nav {
   background: #1d1e2c;
 }
 
+#lostJumbo {
+  background: #7fc29b;
+}
+
+#brand,
+h1,
+h2 {
+  font-family: 'Itim', cursive;
+}
+
+.reportBtn {
+  background: #1d1e2c;
+  border: 2px solid #59656f;
+  color: white;
+}
+
+.reportBtn:hover {
+  background: #59656f;
+  border: 2px solid #1d1e2c;
+  color: white;
+}
+
+#spawnedCards:hover {
+  box-shadow: 3px 3px 5px 6px rgba(56, 56, 56, 0.74);
+}
+
+#card-footer a,
+#foundBtn {
+  background: #7fc29b;
+  border: 2px solid #1d1e2c;
+  color: black;
+}
+
+#card-footer a:hover,
+#foundBtn:hover {
+  background: #1d1e2c;
+  border: 2px solid #7fc29b;
+  color: white;
+}
+
 .btn-lg {
   width: 10em;
   margin: 0.5em;
