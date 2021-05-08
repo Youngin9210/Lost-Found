@@ -1,23 +1,25 @@
 const newSearchHandler = async (event) => {
     event.preventDefault();
 
-    const search = document.querySelector('#searchfield').value.trim();
-
+    let search = document.querySelector('#searchfield').value.trim();
+    search = search.split(' ').join('+');
+    
     if (search) {
         console.log(search);
-        const response = await fetch(`/search`, {
-        method: 'POST',
-        body: JSON.stringify({ search }),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        });
-
-        if (response.ok) {
-            document.location.replace('/search');
-        } else {
-            alert('Failed to search');
-        }
+        // const response = await fetch(`/search`, {
+        // method: 'GET',
+        // body: JSON.stringify({ search }),
+        // headers: {
+        //     'Content-Type': 'application/json',
+        // },
+        // });
+        document.location.replace(`/search/${search}`);
+        // if (response.ok) {
+            
+            
+        // } else {
+        //     alert('Failed to search');
+        // }
     }
 }
 
