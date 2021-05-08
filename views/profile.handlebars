@@ -18,11 +18,9 @@
       <h3>Items that have been found:</h3>
       {{#each items as |item|}}
         {{#if item.isFound}}
-          <div class="row mb-2">
-            <div class="col-md-8">
-              <h4><a href="/item/{{item.id}}">{{item.name}}</a></h4>
-            </div>
-            <div class="col-md-4 text-right">
+          <div class="row mb-2 d-flex justify-content-center">
+            <div class="col-md-8 d-flex justify-content-center">
+              <h4 class="m-2"><a href="/item/{{item.id}}">{{item.name}}</a></h4>
               <button class="btn btn-sm btn-danger" data-id="{{item.id}}"><i class="far fa-trash-alt"></i></button>
             </div>
           </div>
