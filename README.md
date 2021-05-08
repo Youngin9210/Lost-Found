@@ -4,7 +4,8 @@ This webapp allows user to submit items they've lost and may not be able to retr
 
 OSU Bootcamp Project #2
 
-[Global Lost and Found](https://github.com/Youngin9210/Lost-Found)
+[Global Lost and Found](https://glacial-fortress-45860.herokuapp.com/)
+
 ![lost-found-img](public/assets/globalLostFound2.png)
 
 ## User Story
