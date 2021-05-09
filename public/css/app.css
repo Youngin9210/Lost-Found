@@ -59,6 +59,10 @@ h5 {
   color: white;
 }
 
+.modalLabel {
+  color: black;
+}
+
 .btn-lg {
   width: 10em;
   margin: 0.5em;
