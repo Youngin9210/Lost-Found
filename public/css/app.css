@@ -92,3 +92,7 @@ div#notificationDropdown,
 div#userDropdown {
   position: absolute;
 }
+
+.container {
+  margin-top: 25px;
+}
