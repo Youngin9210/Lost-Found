@@ -3,6 +3,7 @@ const updateItem = async (event) => {
   const description = document.querySelector('#item-desc').value;
   const reward = document.querySelector('#item-reward').value;
   const id = document.querySelector('#update-item').getAttribute('data-item');
+  alert(id);
 
   if (name && description && reward) {
     console.log(name, description, reward, id);

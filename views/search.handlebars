@@ -1,70 +1,54 @@
-<h1 class="d-flex justify-content-center">Global Lost and Found</h1>
-<div class = "container" id="actionContainer">
-  <div class = "d-flex justify-content-center ">
-    <div class="">
-		  <a href="/profile" class="btn btn-primary btn-lg " role="button" aria-pressed="true" id="submitItemBtn">Submit Lost Item</a>
-    </div>
-  </div>
+<div class="jumbotron jumbotron-fluid text-center p-5" id="lostJumbo">
+  <h1 class="display-4">Global Lost & Found</h1>
+  <p class="lead">Where all users can come together to help one another with finding lost items throughout the world!</p>
+  <hr class="my-4">
+  <p>Did you recently lose something and need help locating it?!</p>
+  <p>Just click the button below to report a lost item so other users can help you find it!</p>
+  <a href="/profile" class="btn btn btn-lg reportBtn">Report Lost Item</a>
 </div>
 
-<div id="input" class='d-flex justify-content-center'>
-  <input type="text" id="searchfield" placeholder="Search for an item">
+<div class="container text-center my-4">
+
+<form id="input" class="form-inline my-2 my-lg-0 d-flex justify-content-center">
+  <input id="searchfield" class="form-control mr-sm-2" type="search" placeholder="Search for an item" aria-label="Search">
   <button id="searchbutton" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</div>
+</form>
+
 
 {{#if items.length}}
-    <div class="container">
-        <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 d-flex justify-content-center">
-        {{#each items as |item|}}
-            {{#if item.name}}
-            {{!-- item.name.includes('searchfield.innerHTML') --}}
-            <a href="api/items/{{item.id}}" class="text-reset text-decoration-none">
-      <div class="card m-3 text-center col-11" id="spawnedCards">
-        <div class="card-body">
-          <h5 class="card-title border-bottom" data-id="{{item.id}}">{{item.name}}</h5>
-          <p class="card-text">{{item.description}}</p>
-          <p>Reward: ${{item.reward}}</p>
-        </div>
-        <div class="card-footer text-muted">
-          <p>Created By: {{item.user.username}}</p>
-          <p>Email: {{item.user.email}}</p>
-          <p>Created: {{format_date item.date_added}}</p>
-        </div>
-      </div>
-    </a>
-    {{else}}
-    <h1>No items match your search</h1>
-    {{/if}}
-  {{/each}}
-  </div>
-</div>
-{{/if}}
-
-{{!-- {{#if items.length}}
 <div class="container">
-  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 d-flex justify-content-center">
-    
+  <h2 class="border-bottom pb-2">Current List of All Lost Items</h2>
+  <div class="row d-flex justify-content-center">
   {{#each items as |item|}}
-    <a href="api/items/{{item.id}}" class="text-reset text-decoration-none">
-      <div class="card m-3 text-center col-11" id="spawnedCards">
-        <div class="card-body">
-          <h5 class="card-title border-bottom">{{item.name}}</h5>
-          <p class="card-text">{{item.description}}</p>
-          <p>Reward: ${{item.reward}}</p>
-        </div>
-        <div class="card-footer text-muted">
-          <p>Created By: {{item.user.username}}</p>
-          <p>Email: {{item.user.email}}</p>
-          <p>Created: {{format_date item.date_added}}</p>
-        </div>
-      </div>
-    </a>
+    {{#unless item.isFound}}
+          <div class="card m-3 text-center col-md-5 col-lg-3" id="spawnedCards">
+            <div class="card-body border-bottom">
+              <div class="card-title border-bottom">
+              <h5>{{capitalize item.name}}</h5>
+              <small class="text-muted">Reported By: {{capitalize item.user.username}}</small>
+              <br>
+              <small class="text-muted"> on {{format_date item.date_added}}</small>
+              </div>
+              <p class="card-text">{{item.description}}</p>
+            </div>
+            <div class="py-3" id="card-footer">
+              <a id="viewItem" href="../api/items/{{item.id}}" class="btn btn-primary">View Item</a>
+            </div>
+          </div>
+    {{/unless}}
   {{/each}}
   </div>
 </div>
 
 {{else}}
 <h1>No reported items</h1>
-{{/if}} --}}
+{{/if}}
+</div>
+
+
+
+
+
+
 
 <script src="/js/search.js"></script>

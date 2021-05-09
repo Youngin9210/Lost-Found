@@ -3,7 +3,6 @@ const { User, Item, Notification } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
-  console.log('/');
   try {
     // Get all items and JOIN with user data
     const itemData = await Item.findAll({
