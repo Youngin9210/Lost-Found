@@ -15,13 +15,30 @@
           </div>
         {{/unless}}
       {{/each}}
-      <h3>Items that have been foundgggggg:</h3>
+      <h3>Have these Items Been Found?</h3>
       {{#each items as |item|}}
-        {{#if item.isFound}}
+        {{#if item.isFound}} 
+ <button onclick="pendingConfirmation()" data-id="{{item.id}}"><i class="removing item has been found" data-id="{{item.id}}"></i>Click Here if Item Has Been Found</button>
+            </div>
+        {{!-- <button onclick="pendingConfirmation()">Press here, if your item has been found!</button> --}}
+        <p id="g"></p>
+        <script>
+          function pendingConfirmation() {
+            var doc;
+            var result = confirm("Has this item been found:");
+            if (result == true) {
+              array.splice(item.id, 1);
+                doc = "We're happy to see your item has been found, it will now be removed from Lost items list";
+            } else {
+                
+            }
+            document.getElementById("g").innerHTML = doc;
+        }
+        </script>
           <div class="row mb-2 d-flex justify-content-center">
             <div class="col-md-8 d-flex justify-content-center">
               <h4 class="m-2"><a href="/item/{{item.id}}">{{item.name}}</a></h4>
-              <button class="btn btn-danger" data-id="{{item.id}}"><i class="far fa-trash-alt fa-lg" data-id="{{item.id}}"></i></button>
+            
             </div>
           </div>
         {{/if}}
