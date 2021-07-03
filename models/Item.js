@@ -39,6 +39,11 @@ Item.init(
         model: 'User',
         key: 'id',
       },
+    pendingConfirm: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
     },
   },
   {

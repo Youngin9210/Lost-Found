@@ -1,79 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lost & Found</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lost & Found</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/app.css">
+	<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/app.css">
 	<script src="https://kit.fontawesome.com/7db05eeb30.js" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
 </head>
+
 <body>
-  <header>
+	<header>
 		<nav class="navbar navbar-dark py-3">
 			<a class="nav-link navbar-brand" id="brand" aria-current="page" href="/">
 				<i class="fas fa-globe-americas fa-lg"></i>
 				Lost & Found
 			</a>
-				<ul class="navbar-nav d-flex flex-row">
-					{{#if logged_in}}
-						{{#if notifications.length}}
-							<li class="nav-item dropdown mx-2">
-								<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
-									<i class="fas fa-bell fa-lg text-light"></i>
-									<span class="badge bg-danger text-light d-flex">
-										<small>{{notifications.length}}</small>
-									</span>
-								</a>
-								<div class="dropdown-menu dropdown-menu-right" id="notificationDropdown">
-									<ul class="list-group" id="notificationList">
-										{{#each notifications as |n|}}
-											<li class="dropdown-item">
-												<p>
-													<a class="text-danger" href="">
-														<i class="fas fa-times" data-id="{{n.id}}"></i>
-													</a>
-													{{capitalize n.Item.name}} has been found!
-												</p>
-											</li>
-										{{/each}}
-									</ul>
-								</div>
+			<ul class="navbar-nav d-flex flex-row">
+				{{#if logged_in}}
+				{{#if notifications.length}}
+				<li class="nav-item dropdown mx-2">
+					<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
+						<i class="fas fa-bell fa-lg text-light"></i>
+						<span class="badge bg-danger text-light d-flex">
+							<small>{{notifications.length}}</small>
+						</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right" id="notificationDropdown">
+						<script>
+							const cofirmItem;
+							if (confirm("Has this item been found") == true) {
+								userPreference = "Thank you for using Lost-Found!";
+							} else {
+								userPreference = "Thank you item will be returned to not found";
+							}
+
+						</script>
+						
+						<ul class="list-group" id="notificationList">
+							{{#each notifications as |n|}}
+							<li class="dropdown-item">
+								<p>
+									<a class="text-danger" href="">
+										<i class="fas fa-times" data-id="{{n.id}}"></i>
+									</a>
+									{{capitalize n.Item.name}} has been found!
+								</p>
 							</li>
+							{{/each}}
+						</ul>
+					</div>
+				</li>
+				{{/if}}
+				{{/if}}
+				<li class="nav-item dropdown mx-2">
+					<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
+						<i class="fas fa-user-circle fa-lg text-light"></i>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right" id="userDropdown">
+						<a href="/profile" class="dropdown-item">Profile</a>
+						{{#if logged_in}}
+						<a href="/logout" class="dropdown-item" id="logout">Logout</a>
+						{{else}}
+						<a href="/login" class="dropdown-item" id="login">Login</a>
+						<a href="/signup" class="dropdown-item" id="signup">Sign Up</a>
 						{{/if}}
-					{{/if}}
-					<li class="nav-item dropdown mx-2">
-						<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
-							<i class="fas fa-user-circle fa-lg text-light"></i>
-						</a>
-						<div class="dropdown-menu dropdown-menu-right" id="userDropdown">
-							<a href="/profile" class="dropdown-item">Profile</a>
-							{{#if logged_in}}
-								<a href="/logout" class="dropdown-item" id="logout">Logout</a>
-							{{else}}
-								<a href="/login" class="dropdown-item" id="login">Login</a>
-								<a href="/signup" class="dropdown-item" id="signup">Sign Up</a>
-							{{/if}}
-						</div>
-					</li>
-				</ul>
+					</div>
+				</li>
+			</ul>
 		</nav>
-  </header>
+	</header>
 
 	{{{ body }}}
 
 	{{#if logged_in}}
-		<script src="/js/logout.js"></script>
-		{{#if notifications.length}}
-		<script src="/js/delete-notification.js"></script>
-		{{/if}}
+	<script src="/js/logout.js"></script>
+	{{#if notifications.length}}
+	<script src="/js/delete-notification.js"></script>
 	{{/if}}
-  
+	{{/if}}
+
 </body>
+
 </html>
